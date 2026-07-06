@@ -21,47 +21,69 @@ const stt = require('./stt');
 const llm = require('./llm');
 const cleanupMod = require('./cleanup');
 
-process.on('unhandledRejection', (r) => console.error('[main] unhandled rejection:', r));
-process.on('uncaughtException', (e) => console.error('[main] uncaught exception:', e));
+// Boot log to a file so we can diagnose the packaged app (no console there).
+const fs = require('fs');
+function bootLog(msg) {
+  const line = `[${new Date().toISOString()}] ${msg}`;
+  console.log(line);
+  try {
+    fs.appendFileSync(path.join(app.getPath('userData'), 'pieflow-boot.log'), line + '\n');
+  } catch {}
+}
+// Each startup step runs in isolation: if one subsystem fails to initialize,
+// the others (above all the global hotkey) must still come up.
+function step(name, fn) {
+  try {
+    fn();
+    bootLog(`ok: ${name}`);
+  } catch (e) {
+    bootLog(`FAILED: ${name}: ${e && e.stack ? e.stack : e}`);
+  }
+}
+
+process.on('unhandledRejection', (r) => bootLog('unhandled rejection: ' + (r && r.stack ? r.stack : r)));
+process.on('uncaughtException', (e) => bootLog('uncaught exception: ' + (e && e.stack ? e.stack : e)));
 
 const gotLock = app.requestSingleInstanceLock();
-console.log('[main] boot, singleInstanceLock =', gotLock);
+bootLog('boot, singleInstanceLock = ' + gotLock);
 if (!gotLock) {
   app.quit();
 } else {
   app.on('second-instance', () => windows.createDashboard());
 
   app.whenReady().then(async () => {
-    console.log('[main] ready');
-    // auto-approve mic for our own windows; nothing else asks for permissions
-    session.defaultSession.setPermissionRequestHandler((wc, permission, cb) => {
-      cb(permission === 'media');
-    });
+    bootLog('ready');
+    try {
+      fs.writeFileSync(path.join(app.getPath('userData'), 'pieflow-boot.log'), '');
+    } catch {}
+    bootLog('boot start');
 
-    await db.open();
-    windows.createOverlay();
-    windows.createDashboard();
-    tray.create();
-    injector.start();
-
-    hotkeys.start({
+    // Register the global hotkey FIRST. It is the core feature and must not be
+    // blocked by any later subsystem (tray icon, windows, sidecars) failing.
+    step('hotkeys', () => hotkeys.start({
       onDictateStart: dictation.onDictateStart,
       onDictateStop: dictation.onDictateStop,
       onDictateCancel: dictation.onDictateCancel,
       onCommandStart: dictation.onCommandStart,
       onCommandStop: dictation.onCommandStop,
-    });
+    }));
 
-    const cfg = settings.load();
-    app.setLoginItemSettings({ openAtLogin: !!cfg.launchAtStartup });
+    try {
+      session.defaultSession.setPermissionRequestHandler((wc, permission, cb) => cb(permission === 'media'));
+    } catch (e) { bootLog('permission handler failed: ' + e); }
 
-    // warm the local model in the background so first dictation is quick
-    stt.warmUp();
-
-    stt.onStatus((s) => {
+    try { await db.open(); bootLog('ok: db'); } catch (e) { bootLog('FAILED: db: ' + (e && e.stack || e)); }
+    step('overlay', () => windows.createOverlay());
+    step('dashboard', () => windows.createDashboard());
+    step('tray', () => tray.create());
+    step('injector', () => injector.start());
+    step('loginItem', () => app.setLoginItemSettings({ openAtLogin: !!settings.load().launchAtStartup }));
+    step('warmUp', () => stt.warmUp());
+    step('sttStatus', () => stt.onStatus((s) => {
       const d = windows.getDashboard();
       if (d) d.webContents.send('stt:status', s);
-    });
+    }));
+    bootLog('boot complete');
   });
 
   app.on('window-all-closed', (e) => {

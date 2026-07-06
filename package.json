@@ -1,6 +1,6 @@
 {
   "name": "pieflow",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "main/index.js",
   "scripts": {
     "start": "electron .",
@@ -54,8 +54,10 @@
     "asarUnpack": [
       "ps/**",
       "python/**",
+      "assets/**",
       "node_modules/sql.js/dist/**",
-      "node_modules/uiohook-napi/**"
+      "node_modules/uiohook-napi/**",
+      "node_modules/node-gyp-build/**"
     ],
     "win": {
       "target": [
