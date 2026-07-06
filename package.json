@@ -1,0 +1,61 @@
+{
+  "name": "pieflow",
+  "version": "0.1.0",
+  "main": "main/index.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win"
+  },
+  "keywords": [],
+  "author": "PieFlow",
+  "license": "MIT",
+  "description": "PieFlow: free local AI voice keyboard for Windows",
+  "devDependencies": {
+    "electron": "^43.0.0",
+    "electron-builder": "^26.15.3",
+    "ws": "^8.21.0"
+  },
+  "dependencies": {
+    "sql.js": "^1.14.1",
+    "uiohook-napi": "^1.5.5"
+  },
+  "build": {
+    "appId": "com.pieflow.app",
+    "productName": "PieFlow",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main/**",
+      "preload/**",
+      "renderer/**",
+      "python/**",
+      "ps/**",
+      "assets/**",
+      "package.json",
+      "node_modules/**"
+    ],
+    "asarUnpack": [
+      "ps/**",
+      "python/**",
+      "node_modules/sql.js/dist/**",
+      "node_modules/uiohook-napi/**"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "assets/icon.png"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "deleteAppDataOnUninstall": false
+    }
+  }
+}
