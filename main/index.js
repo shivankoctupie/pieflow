@@ -15,13 +15,18 @@ const stt = require('./stt');
 const llm = require('./llm');
 const cleanupMod = require('./cleanup');
 
+process.on('unhandledRejection', (r) => console.error('[main] unhandled rejection:', r));
+process.on('uncaughtException', (e) => console.error('[main] uncaught exception:', e));
+
 const gotLock = app.requestSingleInstanceLock();
+console.log('[main] boot, singleInstanceLock =', gotLock);
 if (!gotLock) {
   app.quit();
 } else {
   app.on('second-instance', () => windows.createDashboard());
 
   app.whenReady().then(async () => {
+    console.log('[main] ready');
     // auto-approve mic for our own windows; nothing else asks for permissions
     session.defaultSession.setPermissionRequestHandler((wc, permission, cb) => {
       cb(permission === 'media');

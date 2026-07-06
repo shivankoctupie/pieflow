@@ -9,63 +9,76 @@
 <div id="app">
   <aside id="sidebar">
     <div class="logo">
-      <svg width="28" height="28" viewBox="0 0 32 32">
-        <circle cx="16" cy="16" r="13" fill="#ff6b35"/>
-        <path d="M16 16 L16 2 A14 14 0 0 1 29.5 12 Z" fill="#ffd9c9"/>
-        <circle cx="16" cy="16" r="13" fill="none" stroke="#1c1b1a" stroke-width="1.6"/>
-        <path d="M16 16 L16 2.4" stroke="#1c1b1a" stroke-width="1.6"/>
-        <path d="M16 16 L29 12.5" stroke="#1c1b1a" stroke-width="1.6"/>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+        <path d="M12 3.5a8.5 8.5 0 1 0 8.5 8.5H12z" fill="#1a1a18"/>
+        <path d="M14.5 1.5a8.5 8.5 0 0 1 8 8h-8z" fill="#e8590c"/>
       </svg>
       <span>PieFlow</span>
     </div>
     <nav>
-      <button class="nav-item active" data-page="home"><span class="ic">&#8962;</span>Home</button>
-      <button class="nav-item" data-page="insights"><span class="ic">&#9632;</span>Insights</button>
-      <button class="nav-item" data-page="dictionary"><span class="ic">&#9998;</span>Dictionary</button>
-      <button class="nav-item" data-page="snippets"><span class="ic">&#10070;</span>Snippets</button>
-      <button class="nav-item" data-page="style"><span class="ic">&#10047;</span>Style</button>
-      <button class="nav-item" data-page="transforms"><span class="ic">&#8646;</span>Transforms</button>
-      <button class="nav-item" data-page="scratchpad"><span class="ic">&#9997;</span>Scratchpad</button>
+      <button class="nav-item active" data-page="home">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5 8 2.5l5 4V13a.5.5 0 0 1-.5.5H9.8V10H6.2v3.5H3.5A.5.5 0 0 1 3 13z"/></svg>
+        Home
+      </button>
+      <button class="nav-item" data-page="insights">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3.5 13.5V9M8 13.5V4.5M12.5 13.5V7"/></svg>
+        Insights
+      </button>
+      <button class="nav-item" data-page="dictionary">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 14.5H4.75A1.75 1.75 0 0 1 3 12.75V3.25A1.75 1.75 0 0 1 4.75 1.5h7.75v13Z"/><path d="M3 12.75A1.75 1.75 0 0 1 4.75 11h7.75"/></svg>
+        Dictionary
+      </button>
+      <button class="nav-item" data-page="snippets">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 4.5h10M3 8h10M3 11.5h5.5"/></svg>
+        Snippets
+      </button>
+      <button class="nav-item" data-page="style">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2.5 5.5h5M12.8 5.5h.7M2.5 10.5h2.2M10 10.5h3.5"/><circle cx="9.4" cy="5.5" r="1.8"/><circle cx="6.6" cy="10.5" r="1.8"/></svg>
+        Style
+      </button>
+      <button class="nav-item" data-page="transforms">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5.5h8.5m0 0L9.2 3.2M11.5 5.5 9.2 7.8M13 10.5H4.5m0 0 2.3-2.3M4.5 10.5l2.3 2.3"/></svg>
+        Transforms
+      </button>
+      <button class="nav-item" data-page="scratchpad">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m3 13 .9-3.2 6.6-6.6a1.2 1.2 0 0 1 1.7 0l.6.6a1.2 1.2 0 0 1 0 1.7l-6.6 6.6z"/></svg>
+        Scratchpad
+      </button>
     </nav>
     <div class="sidebar-bottom">
-      <button class="nav-item" data-page="settings"><span class="ic">&#9881;</span>Settings</button>
+      <button class="nav-item" data-page="settings">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M5.5 2.5v3.9M5.5 10.1v3.4M10.5 2.5v1.4M10.5 7.6v5.9"/><circle cx="5.5" cy="8.2" r="1.8"/><circle cx="10.5" cy="5.8" r="1.8"/></svg>
+        Settings
+      </button>
     </div>
   </aside>
 
   <main id="content">
     <!-- HOME -->
     <section class="page active" id="page-home">
+      <h1 id="welcome">Welcome back</h1>
       <div class="home-grid">
         <div class="home-main">
-          <h1 id="welcome">Welcome back</h1>
           <div class="hero card">
-            <div class="hero-left">
-              <h2>Speak. PieFlow types.</h2>
-              <p>Hold <b id="hero-hotkey">Ctrl + Shift + Space</b> in any app and start talking.
-                 Release, and clean text appears at your cursor.
-                 Double-tap for hands-free. Hold <b id="hero-cmdkey">Ctrl + Shift + K</b> over
-                 selected text to rewrite it with your voice.</p>
-              <div id="engine-status" class="engine-status"></div>
-            </div>
-            <div class="hero-art">
-              <svg width="120" height="120" viewBox="0 0 32 32">
-                <circle cx="16" cy="16" r="13" fill="#ff6b35" opacity="0.14"/>
-                <circle cx="16" cy="16" r="9" fill="#ff6b35" opacity="0.25"/>
-                <circle cx="16" cy="16" r="5" fill="#ff6b35"/>
-              </svg>
-            </div>
+            <h2>Speak. PieFlow types.</h2>
+            <p>Hold <kbd id="hero-hotkey">Ctrl + Shift + Space</kbd> in any app and start talking.
+               Release, and clean text appears at your cursor. Double-tap for hands-free.
+               Hold <kbd id="hero-cmdkey">Ctrl + Shift + K</kbd> over selected text to rewrite it with your voice.</p>
+            <div id="engine-status" class="engine-status"></div>
           </div>
           <div class="section-head">
             <h3>Recent activity</h3>
-            <input type="search" id="history-search" placeholder="Search dictations...">
+            <input type="search" id="history-search" placeholder="Search dictations">
           </div>
           <div id="history-list"></div>
         </div>
         <div class="home-side">
-          <div class="card stat-card"><div class="stat-num" id="stat-words">0</div><div class="stat-label">Total words dictated</div></div>
-          <div class="card stat-card"><div class="stat-num" id="stat-wpm">0</div><div class="stat-label">Average words per minute</div></div>
-          <div class="card stat-card"><div class="stat-num" id="stat-streak">0</div><div class="stat-label">Day streak</div></div>
-          <div class="card stat-card"><div class="stat-num" id="stat-count">0</div><div class="stat-label">Dictations</div></div>
+          <div class="card stats-card">
+            <div class="stat"><div class="stat-num" id="stat-words">0</div><div class="stat-label">Total words dictated</div></div>
+            <div class="stat"><div class="stat-num" id="stat-wpm">0</div><div class="stat-label">Average words per minute</div></div>
+            <div class="stat"><div class="stat-num" id="stat-streak">0</div><div class="stat-label">Day streak</div></div>
+            <div class="stat"><div class="stat-num" id="stat-count">0</div><div class="stat-label">Dictations</div></div>
+          </div>
         </div>
       </div>
     </section>
@@ -134,7 +147,7 @@
       <h1>Scratchpad</h1>
       <p class="hint">A quiet place to dictate. Click into the box, hold your hotkey, speak.</p>
       <div class="card">
-        <textarea id="scratch" rows="18" placeholder="Dictate or type here..."></textarea>
+        <textarea id="scratch" rows="18" placeholder="Dictate or type here"></textarea>
         <div class="row-right">
           <span id="scratch-saved" class="muted"></span>
           <button class="btn" id="scratch-copy">Copy all</button>
@@ -219,14 +232,14 @@
           </select>
         </div>
         <div class="setting-row">
-          <div><b>Ollama model</b><div class="muted" id="ollama-status">checking...</div></div>
+          <div><b>Ollama model</b><div class="muted" id="ollama-status">checking</div></div>
           <select id="ollama-model"><option value="">auto</option></select>
         </div>
       </div>
 
       <div class="card">
         <h3>API keys (optional)</h3>
-        <p class="hint">PieFlow is fully free without keys. Add one for faster transcription
+        <p class="hint" style="margin:0 0 6px">PieFlow is fully free without keys. Add one for faster transcription
            and smarter cleanup. Keys are stored only on this computer.</p>
         <div class="setting-row">
           <div><b>OpenAI</b><div class="muted" id="openai-key-state"></div></div>

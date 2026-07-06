@@ -153,7 +153,7 @@ async function loadInsights() {
   $('#chart-wpm').innerHTML = `<div class="bar-chart">${days.map((d) => `
     <div class="bar-col">
       <div class="bv">${d.wpm || ''}</div>
-      <div class="bar" style="height:${Math.max(2, (d.wpm / maxWpm) * 100)}%; background:#5b8def"></div>
+      <div class="bar alt" style="height:${Math.max(2, (d.wpm / maxWpm) * 100)}%"></div>
       <div class="bl">${esc(d.label)}</div>
     </div>`).join('')}</div>`;
 
