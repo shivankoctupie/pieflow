@@ -4,6 +4,14 @@ A free, fully local AI voice keyboard for Windows. Hold a hotkey anywhere, speak
 
 PieFlow transcribes with local Whisper, strips fillers ("um", "uh"), fixes punctuation and capitalization, resolves self-corrections ("let's meet Tuesday, wait no Friday" becomes "let's meet Friday"), expands snippets, applies per-app tone, and can rewrite selected text from a spoken instruction. No account, no login, no telemetry, no required API key. Everything stays on your machine in SQLite and local files.
 
+## Download (Windows)
+
+Grab the latest installer from the [Releases page](https://github.com/shivankoctupie/pieflow/releases), run it, and PieFlow installs to the Start menu.
+
+The installer is not code-signed, so Windows SmartScreen may warn on first launch. Click "More info" then "Run anyway". You can verify what you are running: the full source is in this repo and you can build the installer yourself (see below).
+
+Prefer to run from source? See [Launch](#launch).
+
 ## Launch
 
 One command from the project folder:

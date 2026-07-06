@@ -6,14 +6,30 @@
     "start": "electron .",
     "dist": "electron-builder --win"
   },
-  "keywords": [],
-  "author": "PieFlow",
+  "keywords": [
+    "voice",
+    "dictation",
+    "speech-to-text",
+    "whisper",
+    "electron",
+    "windows",
+    "productivity",
+    "accessibility"
+  ],
+  "author": "Shivank Goura",
   "license": "MIT",
   "description": "PieFlow: free local AI voice keyboard for Windows",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shivankoctupie/pieflow.git"
+  },
+  "homepage": "https://github.com/shivankoctupie/pieflow#readme",
+  "bugs": {
+    "url": "https://github.com/shivankoctupie/pieflow/issues"
+  },
   "devDependencies": {
     "electron": "^43.0.0",
-    "electron-builder": "^26.15.3",
-    "ws": "^8.21.0"
+    "electron-builder": "^26.15.3"
   },
   "dependencies": {
     "sql.js": "^1.14.1",
