@@ -4,6 +4,12 @@ const path = require('path');
 
 app.setName('PieFlow');
 
+// Portable mode: keep all app data (settings, history, models cache) under a
+// custom directory instead of %APPDATA%. Handy for a USB install or testing.
+if (process.env.PIEFLOW_USER_DATA) {
+  try { app.setPath('userData', process.env.PIEFLOW_USER_DATA); } catch {}
+}
+
 const settings = require('./settings');
 const db = require('./db');
 const windows = require('./windows');
