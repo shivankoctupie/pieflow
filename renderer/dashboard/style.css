@@ -246,6 +246,33 @@ textarea { resize: vertical; width: 100%; line-height: 1.55; }
 
 .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 
+/* ---------- pro ---------- */
+.pro-card { border-color: var(--accent); background: linear-gradient(180deg, #fff, var(--accent-soft, #fdeee4)); }
+.pro-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
+.pro-head .muted { margin-top: 6px; max-width: 520px; }
+.pro-state {
+  font-size: 11px; font-weight: 600; color: var(--muted); background: #ecebe6;
+  border-radius: 999px; padding: 2px 9px; vertical-align: middle; margin-left: 6px;
+}
+.pro-state.on { color: #fff; background: var(--accent); }
+.pro-activate { display: flex; gap: 8px; margin-top: 16px; }
+.pro-activate input { flex: 1; }
+#license-msg { margin-top: 10px; }
+#license-msg.ok { color: var(--ok); }
+#license-msg.err { color: var(--err); }
+.pro-tag {
+  font-size: 9.5px; font-weight: 700; letter-spacing: .04em; color: var(--accent);
+  background: var(--accent-soft, #fdeee4); border-radius: 4px; padding: 1px 5px; margin-left: auto;
+}
+.upgrade-banner {
+  display: flex; align-items: center; justify-content: space-between; gap: 20px;
+  background: var(--accent-soft, #fdeee4); border: 1px solid var(--accent);
+  border-radius: var(--radius); padding: 16px 20px; margin-bottom: 16px;
+}
+.upgrade-banner div { color: var(--ink); }
+.upgrade-banner .muted { color: var(--muted); }
+.locked { opacity: .55; pointer-events: none; }
+
 /* ---------- charts ---------- */
 .bar-chart { display: flex; align-items: flex-end; gap: 6px; height: 150px; padding-top: 8px; }
 .bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; height: 100%; justify-content: flex-end; }

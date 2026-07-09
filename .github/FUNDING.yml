@@ -1,0 +1,8 @@
+# Shows a "Sponsor" button on the GitHub repo.
+# GitHub Sponsors needs enrollment at https://github.com/sponsors ; the others
+# just need an account. Uncomment and fill in whatever you set up.
+github: [shivankoctupie]
+# ko_fi: your-kofi-username
+# buy_me_a_coffee: your-bmac-username
+# polar: shivankoctupie
+custom: []

@@ -12,6 +12,7 @@ const injector = require('./injector');
 const db = require('./db');
 const windows = require('./windows');
 const hotkeys = require('./hotkeys');
+const license = require('./license');
 
 let mode = null;            // 'dictate' | 'command' | null
 let fgInfo = { exe: '', title: '' };
@@ -112,6 +113,12 @@ async function onDictateStart() {
 }
 
 async function onCommandStart() {
+  // Command Mode is a PieFlow Pro feature.
+  if (!license.isPro()) {
+    flashOverlay('error', 'Command Mode is a Pro feature. Unlock it in Settings.', 3000);
+    hotkeys.release();
+    return;
+  }
   mode = 'command';
   fgInfo = await injector.foreground();
   setOverlayState('listening', 'Command');

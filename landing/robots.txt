@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pieflow.app/sitemap.xml

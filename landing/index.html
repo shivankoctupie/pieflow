@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PieFlow: Free Wispr Flow Alternative for Windows | Local AI Voice Dictation</title>
+<meta name="description" content="PieFlow is a free, open-source Wispr Flow alternative for Windows. Press a hotkey in any app, speak, and it types clean, punctuated text. Local Whisper AI voice dictation, private, no subscription.">
+<meta name="keywords" content="wispr flow alternative, wispr flow windows, free voice dictation windows, voice to text windows, speech to text app, whisper dictation, superwhisper alternative, ai voice keyboard, open source dictation">
+<link rel="canonical" href="https://pieflow.app/">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#f7f7f5">
+<link rel="icon" type="image/png" href="assets/icon.png">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PieFlow">
+<meta property="og:title" content="PieFlow: Free Wispr Flow Alternative for Windows">
+<meta property="og:description" content="Press a hotkey in any app, speak, and PieFlow types clean text. Free, open-source, local AI voice dictation for Windows. No account, no subscription.">
+<meta property="og:image" content="https://pieflow.app/assets/og.png">
+<meta property="og:url" content="https://pieflow.app/">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PieFlow: Free Wispr Flow Alternative for Windows">
+<meta name="twitter:description" content="Talk, and it types. Free, open-source, local voice dictation for Windows.">
+<meta name="twitter:image" content="https://pieflow.app/assets/og.png">
+
+<link rel="stylesheet" href="styles.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "PieFlow",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Windows 10, Windows 11",
+  "description": "Free, open-source Wispr Flow alternative for Windows. Local AI voice dictation that types clean text into any app.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "downloadUrl": "https://github.com/shivankoctupie/pieflow/releases/latest",
+  "license": "https://opensource.org/licenses/MIT",
+  "softwareVersion": "0.1.2"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Is there a free Wispr Flow alternative for Windows?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. PieFlow is a free, open-source voice dictation app for Windows 10 and 11. It transcribes locally with Whisper and types clean text into any app." } },
+    { "@type": "Question", "name": "Does PieFlow work offline and keep my voice private?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. With the local Whisper engine, dictation runs entirely on your machine with no account and no cloud upload. Your audio never leaves your computer unless you choose to add a cloud API key." } },
+    { "@type": "Question", "name": "Do I need a subscription or API key?", "acceptedAnswer": { "@type": "Answer", "text": "No. PieFlow is free with no word limits. You can optionally add a Groq or OpenAI key for faster transcription, but it is never required." } }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="nav">
+  <a class="brand" href="#top">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M12 3.5a8.5 8.5 0 1 0 8.5 8.5H12z" fill="#1a1a18"/>
+      <path d="M14.5 1.5a8.5 8.5 0 0 1 8 8h-8z" fill="#e8590c"/>
+    </svg>
+    <span>PieFlow</span>
+  </a>
+  <nav class="nav-links">
+    <a href="#features">Features</a>
+    <a href="#compare">vs Wispr Flow</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
+    <a class="nav-ghost" href="https://github.com/shivankoctupie/pieflow" target="_blank" rel="noopener">GitHub</a>
+    <a class="nav-cta" href="https://github.com/shivankoctupie/pieflow/releases/latest">Download</a>
+  </nav>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="hero-copy">
+    <div class="pill-badge">Open source · Free · Windows 10 &amp; 11</div>
+    <h1>The free <span class="hl">Wispr Flow alternative</span> for Windows</h1>
+    <p class="lede">Press a hotkey in any app, speak naturally, and PieFlow types clean, punctuated text at your cursor. Local Whisper AI dictation that runs on your machine. No account, no subscription.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="https://github.com/shivankoctupie/pieflow/releases/latest">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3v10.6l3.3-3.3 1.4 1.4L12 17.4 6.3 11.7l1.4-1.4L11 13.6V3h1zM5 19h14v2H5z"/></svg>
+        Download for Windows
+      </a>
+      <a class="btn btn-ghost" href="https://github.com/shivankoctupie/pieflow" target="_blank" rel="noopener">Star on GitHub</a>
+    </div>
+    <div class="hero-note">Free forever · 100% local · 100+ languages · MIT licensed</div>
+  </div>
+  <div class="hero-visual">
+    <div class="window">
+      <div class="window-bar"><span></span><span></span><span></span></div>
+      <img src="assets/home.png" alt="PieFlow app showing recent voice dictations, words per minute and day streak" loading="eager" width="1360" height="880">
+    </div>
+    <img class="floating-pill" src="assets/overlay.png" alt="PieFlow listening indicator" width="360" height="120">
+  </div>
+</section>
+
+<section class="trustbar">
+  <span>Local Whisper AI</span><i></i>
+  <span>No account</span><i></i>
+  <span>No telemetry</span><i></i>
+  <span>Works in every app</span><i></i>
+  <span>MIT open source</span>
+</section>
+
+<section id="features" class="section">
+  <h2>Everything you need to talk instead of type</h2>
+  <p class="section-sub">A full voice keyboard for Windows, not just raw transcription.</p>
+  <div class="grid">
+    <div class="feature">
+      <div class="ficon">🎙️</div>
+      <h3>Push-to-talk or hands-free</h3>
+      <p>Hold the hotkey to dictate, or double-tap for hands-free mode. Works in browsers, email, editors, chat, any text field.</p>
+    </div>
+    <div class="feature">
+      <div class="ficon">✨</div>
+      <h3>AI cleanup</h3>
+      <p>Removes "um" and "uh", fixes punctuation and capitalization, and resolves spoken self-corrections. Your words, cleaned up, never answered.</p>
+    </div>
+    <div class="feature">
+      <div class="ficon">🔒</div>
+      <h3>Private by default</h3>
+      <p>Local Whisper transcription. No account, no telemetry, no cloud round-trip. Your audio stays on your device.</p>
+    </div>
+    <div class="feature">
+      <div class="ficon">📖</div>
+      <h3>Personal dictionary</h3>
+      <p>Teach it names, jargon, and product terms so it always spells them right. It learns from your corrections over time.</p>
+    </div>
+    <div class="feature">
+      <div class="ficon">⚡</div>
+      <h3>Snippets &amp; commands</h3>
+      <p>Say a trigger to expand saved text. Select text and speak an instruction to rewrite it in place.</p>
+    </div>
+    <div class="feature">
+      <div class="ficon">🌍</div>
+      <h3>100+ languages</h3>
+      <p>Automatic language detection powered by Whisper, with per-app tone profiles for email, chat, and code.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section steps-section">
+  <h2>How it works</h2>
+  <div class="steps">
+    <div class="step"><div class="snum">1</div><h3>Press the hotkey</h3><p>Hold <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Space</kbd> anywhere in Windows. A small pill shows PieFlow is listening.</p></div>
+    <div class="step"><div class="snum">2</div><h3>Speak naturally</h3><p>Talk the way you think. PieFlow transcribes on your machine, or with your own Groq key for extra speed.</p></div>
+    <div class="step"><div class="snum">3</div><h3>It types for you</h3><p>Clean, punctuated text appears at your cursor, right where you were working. Say "press enter" to submit.</p></div>
+  </div>
+</section>
+
+<section id="compare" class="section">
+  <h2>PieFlow vs Wispr Flow</h2>
+  <p class="section-sub">Both turn your voice into text. PieFlow is the free, open-source, local-first option.</p>
+  <div class="table-wrap">
+    <table class="compare">
+      <thead><tr><th></th><th class="us">PieFlow</th><th>Wispr Flow</th></tr></thead>
+      <tbody>
+        <tr><td>Price</td><td class="us">Free &amp; open source</td><td>Paid subscription</td></tr>
+        <tr><td>Where speech is processed</td><td class="us">On your machine</td><td>In the cloud</td></tr>
+        <tr><td>Privacy</td><td class="us">Audio stays local</td><td>Audio uploaded</td></tr>
+        <tr><td>Account required</td><td class="us">No</td><td>Yes</td></tr>
+        <tr><td>Works offline</td><td class="us">Yes</td><td>No</td></tr>
+        <tr><td>Windows support</td><td class="us">Built for Windows</td><td>Yes</td></tr>
+        <tr><td>Source code</td><td class="us">Open, auditable</td><td>Proprietary</td></tr>
+        <tr><td>Bring your own API key</td><td class="us">Yes (optional)</td><td>No</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="fineprint">Comparison reflects general positioning. Check each product for current details. PieFlow is an independent open-source project and is not affiliated with Wispr Flow.</p>
+</section>
+
+<section id="pricing" class="section pricing-section">
+  <h2>Simple, honest pricing</h2>
+  <p class="section-sub">PieFlow is open source, so the app is always free. Pro is a supporter license that unlocks power features and funds development.</p>
+  <div class="plans">
+    <div class="plan">
+      <div class="plan-name">Free</div>
+      <div class="plan-price">$0<span>/ forever</span></div>
+      <p class="plan-desc">Everything you need for everyday voice typing.</p>
+      <ul>
+        <li>Unlimited local dictation</li>
+        <li>Local Whisper, or bring your own Groq / OpenAI key</li>
+        <li>AI cleanup and self-corrections</li>
+        <li>Personal dictionary &amp; snippets</li>
+        <li>Searchable history</li>
+        <li>100+ languages</li>
+      </ul>
+      <a class="btn btn-ghost full" href="https://github.com/shivankoctupie/pieflow/releases/latest">Download free</a>
+    </div>
+    <div class="plan plan-pro">
+      <div class="plan-badge">Support the project</div>
+      <div class="plan-name">Pro</div>
+      <div class="plan-price">$29<span>/ one-time</span></div>
+      <p class="plan-desc">A lifetime supporter license that unlocks the power features.</p>
+      <ul>
+        <li>Everything in Free</li>
+        <li>Command Mode: rewrite selected text by voice</li>
+        <li>Per-app tone &amp; style profiles</li>
+        <li>Custom transforms</li>
+        <li>Usage insights &amp; analytics</li>
+        <li>Unlimited dictionary &amp; snippets</li>
+        <li>Priority support</li>
+      </ul>
+      <a class="btn btn-primary full" href="https://pieflow.lemonsqueezy.com/buy/REPLACE-WITH-VARIANT" data-checkout>Get Pro</a>
+      <div class="plan-foot">One-time payment, pay in your local currency. 30-day refund.</div>
+    </div>
+  </div>
+  <p class="fineprint">Because PieFlow is open source, Pro runs on trust: your license unlocks the power features and helps keep the project alive. Thank you for supporting independent software.</p>
+</section>
+
+<section id="faq" class="section">
+  <h2>Frequently asked questions</h2>
+  <div class="faq">
+    <details><summary>Is there a free Wispr Flow alternative for Windows?</summary><p>Yes, that is exactly what PieFlow is. It is free, open source, and runs locally on Windows 10 and 11.</p></details>
+    <details><summary>Does PieFlow work offline?</summary><p>Yes. With the default local Whisper engine, dictation works with no internet connection after a one-time model download.</p></details>
+    <details><summary>Is my voice data private?</summary><p>Yes. By default your audio is transcribed on your own machine and never uploaded. There is no account and no telemetry. If you add a cloud API key, only then is audio sent to that provider, and only when you use that engine.</p></details>
+    <details><summary>Do I need a subscription or API key?</summary><p>No. PieFlow is free with no word limits. A Groq or OpenAI key is optional and only adds speed or extra polish.</p></details>
+    <details><summary>What languages does it support?</summary><p>Over 100, via Whisper, with automatic language detection.</p></details>
+    <details><summary>How is this different from just using Windows dictation?</summary><p>PieFlow adds AI cleanup, a personal dictionary, snippets, per-app tone, command mode, and far better accuracy through Whisper, all while staying local and private.</p></details>
+  </div>
+</section>
+
+<section class="cta-band">
+  <h2>Start talking instead of typing</h2>
+  <p>Free, private, and open source. Install in a couple of minutes.</p>
+  <a class="btn btn-primary" href="https://github.com/shivankoctupie/pieflow/releases/latest">Download for Windows</a>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="foot-brand">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3.5a8.5 8.5 0 1 0 8.5 8.5H12z" fill="#1a1a18"/><path d="M14.5 1.5a8.5 8.5 0 0 1 8 8h-8z" fill="#e8590c"/></svg>
+    <span>PieFlow</span>
+  </div>
+  <nav class="foot-links">
+    <a href="https://github.com/shivankoctupie/pieflow" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://github.com/shivankoctupie/pieflow/releases/latest">Download</a>
+    <a href="#pricing">Pricing</a>
+    <a href="https://github.com/shivankoctupie/pieflow/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a>
+  </nav>
+  <div class="foot-note">Free, open-source voice dictation for Windows. An independent Wispr Flow alternative.</div>
+</footer>
+
+</body>
+</html>

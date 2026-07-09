@@ -24,6 +24,12 @@ contextBridge.exposeInMainWorld('pie', {
     onStatus: (cb) => ipcRenderer.on('stt:status', (e, s) => cb(s)),
   },
   llm: { status: invoke('llm:status') },
+  license: {
+    status: invoke('license:status'),
+    activate: invoke('license:activate'),
+    deactivate: invoke('license:deactivate'),
+    checkout: invoke('license:checkout'),
+  },
   scratchpad: { get: invoke('scratchpad:get'), set: invoke('scratchpad:set') },
   test: { inject: invoke('test:inject'), cleanup: invoke('test:cleanup') },
 });

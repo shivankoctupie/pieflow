@@ -23,7 +23,12 @@
   <a href="#features">Features</a> ·
   <a href="#pieflow-vs-wispr-flow">vs Wispr Flow</a> ·
   <a href="#how-it-works">How it works</a> ·
+  <a href="#pricing">Pricing</a> ·
   <a href="#faq">FAQ</a>
+</p>
+
+<p align="center">
+  <i>Like PieFlow? <a href="https://github.com/sponsors/shivankoctupie">Sponsor the project</a> or grab <a href="#pricing">Pro</a> to support development.</i>
 </p>
 
 ---
@@ -141,6 +146,22 @@ PieFlow is fully functional with **no keys**: local Whisper for speech, built-in
 - **API keys** (paid, cloud): add an OpenAI or Groq key in Settings for faster transcription and higher-quality cleanup. Groq has a generous free tier. Keys are stored only on your computer and used directly against the provider. If a key stops working, PieFlow falls back to local automatically.
 
 Priority when several options exist: your explicit setting first, then a cloud key, then Ollama, then built-in rules. Nothing ever breaks by removing a key.
+
+## Pricing
+
+PieFlow is **open source and free**. The core app, local dictation, cleanup, dictionary, snippets, and history are yours at no cost, forever.
+
+**PieFlow Pro** ($29 one-time) is an optional supporter license that unlocks the power features and funds development:
+
+| Free | Pro |
+|---|---|
+| Unlimited local dictation | Everything in Free |
+| Local Whisper or your own key | Command Mode (rewrite selected text by voice) |
+| AI cleanup & self-corrections | Custom transforms |
+| Dictionary, snippets, history | Per-app style profiles |
+| 100+ languages | Priority support |
+
+Because PieFlow is open source, Pro runs on trust. Your license unlocks the Pro features in Settings and helps keep the project alive. Get it from the [website](https://pieflow.app/#pricing), or [sponsor the project](https://github.com/sponsors/shivankoctupie) if you prefer.
 
 ## Windows permissions
 

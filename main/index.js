@@ -20,6 +20,8 @@ const injector = require('./injector');
 const stt = require('./stt');
 const llm = require('./llm');
 const cleanupMod = require('./cleanup');
+const license = require('./license');
+const { shell } = require('electron');
 
 // Boot log to a file so we can diagnose the packaged app (no console there).
 const fs = require('fs');
@@ -79,6 +81,7 @@ if (!gotLock) {
     step('injector', () => injector.start());
     step('loginItem', () => app.setLoginItemSettings({ openAtLogin: !!settings.load().launchAtStartup }));
     step('warmUp', () => stt.warmUp());
+    step('license', () => license.refresh());
     step('sttStatus', () => stt.onStatus((s) => {
       const d = windows.getDashboard();
       if (d) d.webContents.send('stt:status', s);
@@ -169,6 +172,12 @@ ipcMain.handle('transforms:delete', (e, id) => { db.deleteTransform(id); return 
 // stats and insights
 ipcMain.handle('stats:get', () => db.getStats());
 ipcMain.handle('insights:get', () => db.getInsights(14));
+
+// pro licensing
+ipcMain.handle('license:status', () => license.status());
+ipcMain.handle('license:activate', (e, key) => license.activate(key));
+ipcMain.handle('license:deactivate', () => license.deactivate());
+ipcMain.handle('license:checkout', () => { shell.openExternal(license.CHECKOUT_URL); return true; });
 
 // engines status
 ipcMain.handle('stt:status', () => stt.getStatus());

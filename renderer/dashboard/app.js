@@ -225,8 +225,12 @@ $('#snip-add').addEventListener('click', async () => {
 
 // ---------- styles ----------
 async function loadStyles() {
+  await refreshPro();
+  const ok = proGate('style', 'Custom style profiles', 'Built-in tones still apply automatically for free. Pro lets you create and edit your own per-app style profiles.');
+  $('#style-new').style.display = ok ? '' : 'none';
   const rows = await pie.styles.list();
   const box = $('#style-list');
+  box.classList.toggle('locked', !ok);
   box.innerHTML = rows.map((r) => {
     let apps = [];
     try { apps = JSON.parse(r.apps || '[]'); } catch {}
@@ -274,8 +278,12 @@ $('#style-new').addEventListener('click', async () => {
 
 // ---------- transforms ----------
 async function loadTransforms() {
+  await refreshPro();
+  const ok = proGate('transforms', 'Transforms', 'Transforms are saved Command Mode instructions you trigger by voice. Command Mode and transforms are part of Pro.');
+  $('#transform-new').style.display = ok ? '' : 'none';
   const rows = await pie.transforms.list();
   const box = $('#transform-list');
+  box.classList.toggle('locked', !ok);
   box.innerHTML = rows.map((r) => `
     <div class="card" data-id="${r.id}">
       <div class="setting-row" style="border:none;padding:0">
@@ -328,8 +336,95 @@ $('#scratch-clear').addEventListener('click', async () => {
   await pie.scratchpad.set('');
 });
 
+// ---------- pro / licensing ----------
+let PRO = false;
+const PRO_PAGES = ['style', 'transforms'];
+
+async function refreshPro() {
+  let s = { pro: false, configured: false, hasKey: false, keyMasked: '', status: 'inactive' };
+  try { s = await pie.license.status(); } catch {}
+  PRO = !!s.pro;
+
+  const stateEl = $('#pro-state');
+  if (stateEl) {
+    stateEl.textContent = PRO ? 'Pro' : 'Free';
+    stateEl.classList.toggle('on', PRO);
+  }
+  const buy = $('#pro-buy');
+  const activate = $('#pro-activate');
+  if (buy && activate) {
+    if (PRO) {
+      buy.textContent = 'Manage';
+      $('#pro-sub').textContent = `Pro is active on this device${s.keyMasked ? ` (${s.keyMasked})` : ''}. Thank you for supporting PieFlow.`;
+      activate.style.display = 'none';
+    } else {
+      buy.textContent = 'Get Pro';
+      activate.style.display = 'flex';
+    }
+  }
+
+  // nav tags + page gating
+  PRO_PAGES.forEach((p) => {
+    const nav = document.querySelector(`.nav-item[data-page="${p}"]`);
+    if (nav) {
+      let tag = nav.querySelector('.pro-tag');
+      if (!PRO && !tag) { tag = document.createElement('span'); tag.className = 'pro-tag'; tag.textContent = 'PRO'; nav.appendChild(tag); }
+      if (PRO && tag) tag.remove();
+    }
+  });
+}
+
+function proGate(pageId, title, blurb) {
+  // Returns true if the page should show its normal content, false if gated.
+  const page = $(`#page-${pageId}`);
+  if (!page) return true;
+  const existing = page.querySelector('.upgrade-banner');
+  if (existing) existing.remove();
+  page.querySelector('[data-progated]')?.classList.remove('locked');
+  if (PRO) return true;
+  const banner = document.createElement('div');
+  banner.className = 'upgrade-banner';
+  banner.innerHTML = `<div><b>${esc(title)} is a Pro feature</b><div class="muted">${esc(blurb)}</div></div>
+    <button class="btn primary" data-upgrade>Unlock with Pro</button>`;
+  const h1 = page.querySelector('h1');
+  h1.insertAdjacentElement('afterend', banner);
+  banner.querySelector('[data-upgrade]').addEventListener('click', goPro);
+  return false;
+}
+
+async function goPro() {
+  try {
+    const s = await pie.license.status();
+    if (!s.configured) {
+      alert('Pro checkout is not set up yet. Add your Lemon Squeezy checkout URL in main/license.js (or the PIEFLOW_CHECKOUT_URL env var).');
+      return;
+    }
+    await pie.license.checkout();
+  } catch {}
+}
+
+$('#pro-buy')?.addEventListener('click', async () => {
+  if (PRO) { $('#page-settings').scrollIntoView(); return; }
+  goPro();
+});
+$('#license-activate')?.addEventListener('click', async () => {
+  const key = $('#license-key').value.trim();
+  const msg = $('#license-msg');
+  if (!key) { msg.textContent = 'Enter your license key.'; msg.className = 'err'; return; }
+  msg.textContent = 'Activating...'; msg.className = 'muted';
+  const r = await pie.license.activate(key);
+  if (r.ok) {
+    msg.textContent = 'Pro activated. Thank you!'; msg.className = 'ok';
+    $('#license-key').value = '';
+    await refreshPro();
+  } else {
+    msg.textContent = r.error || 'Activation failed.'; msg.className = 'err';
+  }
+});
+
 // ---------- settings ----------
 async function loadSettings() {
+  await refreshPro();
   const cfg = await pie.settings.get();
   if (cfg.hotkey) $('#hotkey-btn').textContent = cfg.hotkey.label;
   if (cfg.commandHotkey) $('#cmdkey-btn').textContent = cfg.commandHotkey.label;
@@ -443,6 +538,7 @@ const loaders = {
   settings: loadSettings,
 };
 loadHome();
+refreshPro();
 setInterval(() => {
   if ($('#page-home').classList.contains('active')) renderEngineChips();
 }, 5000);
